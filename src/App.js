@@ -12,7 +12,6 @@ export default class App extends Component {
     this.submitItem = this.submitItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.state = {
-      // showList: "Please Login To Use App",
       showListInput: "Plase Login To Use The App :)",
       username: "",
       userList: ""
