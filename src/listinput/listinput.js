@@ -15,12 +15,14 @@ export default class ListInput extends React.Component {
 
     runSubmitItem() {
         this.props.submitItem(this.state.item).then((result) => {
-            console.log(result)
+            // console.log(result.data.message)
             this.setState({
                 item: "",
-                userList: result.data.item[0].items.map((items, index) => {
-                    var list = <li>{items[index]}</li>
-                    return list
+                userList: result.data.item[0].items.map((items, index)=>{
+                    var somelist = <div>
+                        <li>{items}</li>
+                        </div>
+                    return somelist
                 })
             })
         })
@@ -28,11 +30,14 @@ export default class ListInput extends React.Component {
 
     runRemoveItem() {
         this.props.removeItem(this.state.item).then((result) => {
+            console.log(result.data.message)
             this.setState({
                 item: "",
                 userList: result.data.item[0].items.map((items, index) => {
-                    var list = <li>{items}</li>
-                    return list
+                    var someotherlist = <div>
+                        <li>{items}</li>
+                        </div>
+                    return someotherlist
                 })
             })
         })
@@ -50,7 +55,7 @@ export default class ListInput extends React.Component {
                 <input type="text" placeholder="enter item" value={this.state.item} onChange={this.onItemChange} />
                 <button onClick={this.runSubmitItem}>Submit Item</button>
                 <p>Your current list:</p>
-                <p>{this.userList}</p>
+                <p>{this.state.userList}</p>
                 <button onClick={this.runRemoveItem}>remove item</button>
             </div>
         )

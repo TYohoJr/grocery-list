@@ -15,6 +15,7 @@ export default class App extends Component {
       showList: "Please Login To Use App",
       showListInput: "",
       username: "",
+      userList:""
     }
   }
 
@@ -26,7 +27,13 @@ export default class App extends Component {
           this.setState({
             showList: <ListResult />,
             showListInput: <ListInput submitItem={this.submitItem} removeItem={this.removeItem} />,
-            username: username
+            username: username,
+            // userList: result.data.item[0].items.map((items, index) => {
+            //   var someotherlist = <div>
+            //       <li>{items}</li>
+            //       </div>
+            //   return someotherlist
+            // })
           })
         }
         resolve(result);
@@ -56,7 +63,7 @@ export default class App extends Component {
       <div className="App">
         <MyNavbar login={this.login} />
         {this.state.showListInput}
-        {/* {this.state.showList} */}
+        {/* {this.state.userList} */}
       </div>
     );
   }
