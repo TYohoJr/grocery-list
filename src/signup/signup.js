@@ -21,13 +21,19 @@ export default class Signup extends Component {
 
     signup() {
         if (this.state.password === this.state.password2) {
-            axios.post("/signup", { username: this.state.username, password: this.state.password }).then((result) => {
-                console.log(result.data);
-                alert(result.data.message);
-                this.setState({
-                    modal:false
+            if (this.state.password.length < 6) {
+                alert(`Password requirements:\nAt least 6 characters long\nAt least one uppercase letter\nAt least one number`)
+            } else if (this.state.password === this.state.password.toLowerCase) {
+                alert(`Password requirements:\nAt least 6 characters long\nAt least one uppercase letter\nAt least one number`)
+            } else {
+                axios.post("/signup", { username: this.state.username, password: this.state.password }).then((result) => {
+                    console.log(result.data);
+                    alert(result.data.message);
+                    this.setState({
+                        modal: false
+                    })
                 })
-            })
+            }
         } else {
             alert(`Passwords must match!`)
         }
@@ -67,9 +73,9 @@ export default class Signup extends Component {
                         <form>
                             <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.onUsernameChange} />
                             <br />
-                            <input type="text" name="password" placeholder="Password" value={this.state.password} onChange={this.onPasswordChange} />
+                            <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.onPasswordChange} />
                             <br />
-                            <input type="text" name="password2" placeholder="Re-enter Password" value={this.state.password2} onChange={this.onPassword2Change} />
+                            <input type="password" name="password2" placeholder="Re-enter Password" value={this.state.password2} onChange={this.onPassword2Change} />
                         </form>
                     </ModalBody>
                     <ModalFooter>

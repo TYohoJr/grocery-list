@@ -9,26 +9,14 @@ export default class Login extends Component {
     this.onUsernameChange = this.onUsernameChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.runLogin = this.runLogin.bind(this);
+    this.showPassword = this.showPassword.bind(this);
     this.state = {
       modal: false,
       username: "",
       password: "",
+      showPasswodType: "password"
     };
   }
-
-  // login() {
-  //   axios.post("/login", { username: this.state.username, password: this.state.password }).then((result) => {
-  //     if (result.data.check) {
-  //       localStorage.setItem('token', result.data.myToken);
-  //       alert(result.data.message);
-  //       this.setState({
-  //         modal: false
-  //       })
-  //     } else {
-  //       alert(result.data.message);
-  //     }
-  //   })
-  // }
 
   runLogin() {
     this.props.login(this.state.username, this.state.password).then((result) => {
@@ -37,8 +25,8 @@ export default class Login extends Component {
         alert(result.data.message);
         this.setState({
           modal: false,
-          username:"",
-          password:""
+          username: "",
+          password: ""
         })
       } else {
         alert(result.data.message);
@@ -64,6 +52,18 @@ export default class Login extends Component {
     });
   }
 
+  showPassword() {
+    if (this.state.showPasswodType === "password") {
+      this.setState({
+        showPasswodType: "text"
+      })
+    } else {
+      this.setState({
+        showPasswodType: "password"
+      })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -74,7 +74,9 @@ export default class Login extends Component {
             <form>
               <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.onUsernameChange} />
               <br />
-              <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.onPasswordChange} />
+              <input type={this.state.showPasswodType} name="password" placeholder="Password" value={this.state.password} onChange={this.onPasswordChange} />
+              <br />
+              <div><input type="checkbox" onChange={this.showPassword} />Show Password</div>
             </form>
           </ModalBody>
           <ModalFooter>
