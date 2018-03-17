@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 export default class ListInput extends React.Component {
     constructor(props) {
@@ -15,7 +14,6 @@ export default class ListInput extends React.Component {
 
     runSubmitItem() {
         this.props.submitItem(this.state.item).then((result) => {
-            // console.log(result.data.message)
             this.setState({
                 item: "",
                 userList: result.data.item[0].items.map((items, index)=>{

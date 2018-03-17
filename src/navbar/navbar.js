@@ -6,11 +6,12 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  // NavLink,
+  // UncontrolledDropdown,
+  // DropdownToggle,
+  // DropdownMenu,
+  // DropdownItem 
+  } from 'reactstrap';
 import Login from "../login/login.js";
 import Signup from "../signup/signup.js";
 

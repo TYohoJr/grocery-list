@@ -12,8 +12,8 @@ export default class App extends Component {
     this.submitItem = this.submitItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.state = {
-      showList: "Please Login To Use App",
-      showListInput: "",
+      // showList: "Please Login To Use App",
+      showListInput: "Plase Login To Use The App :)",
       username: "",
       userList:""
     }
@@ -28,12 +28,6 @@ export default class App extends Component {
             showList: <ListResult />,
             showListInput: <ListInput submitItem={this.submitItem} removeItem={this.removeItem} />,
             username: username,
-            // userList: result.data.item[0].items.map((items, index) => {
-            //   var someotherlist = <div>
-            //       <li>{items}</li>
-            //       </div>
-            //   return someotherlist
-            // })
           })
         }
         resolve(result);
@@ -63,7 +57,6 @@ export default class App extends Component {
       <div className="App">
         <MyNavbar login={this.login} />
         {this.state.showListInput}
-        {/* {this.state.userList} */}
       </div>
     );
   }

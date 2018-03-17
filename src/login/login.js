@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
